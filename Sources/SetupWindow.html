@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src file:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>Royal GTPS Setup</title>
+<style>
+html { color-scheme: light dark }
+body { margin: 0 }
+#royal-world {
+  font: 14px/1.4 -apple-system,BlinkMacSystemFont,sans-serif;
+  padding: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  --ink: #243422;
+  --muted: #4e6243;
+  --panel: #fcfbed;
+  --bar: #edf1d8;
+  --rim: #637a45;
+  --line: #d4dfbc;
+  --green: #23612b;
+  --active: #1a557a;
+  --warn: #8a3c20;
+  --button: #33642d;
+  --button-rim: #2b4f25;
+  --button-shadow: #25411f;
+  color: var(--ink);
+}
+@media (prefers-color-scheme: dark) {
+  #royal-world {
+    --ink: #f0f5dd;
+    --muted: #bed0b1;
+    --panel: #233126;
+    --bar: #29392b;
+    --rim: #6a8657;
+    --line: #475d44;
+    --green: #b5efa5;
+    --active: #a8ddff;
+    --warn: #ffbd99;
+    --button: #426b32;
+    --button-rim: #85a76d;
+    --button-shadow: #172a18;
+  }
+}
+#royal-world * { box-sizing:border-box }
+#royal-world [hidden] { display:none!important }
+#royal-world .launcher {background:var(--panel);border:2px solid var(--rim);border-radius:12px;overflow:hidden;box-shadow:none }
+#royal-world .titlebar { display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 14px 8px 77px;background:var(--bar);border-bottom:1px solid var(--rim);font-size:12px;font-weight:700 }
+#royal-world .titlebar span { color:var(--muted);font-weight:500 }
+#royal-world .hero { margin:0; border-bottom:4px solid #6a983c; background:#56c7e3 }
+#royal-world .hero img { display:block; width:100%; height:auto; -webkit-user-drag:none }
+#royal-world .content { padding:15px 19px 12px }
+#royal-world .heading { display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 8px }
+#royal-world h2 { font-size:16px;margin:0;font-weight:750 }
+#royal-world .count { font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap }
+#royal-world .steps { margin:0;padding:0;list-style:none;border-block:1px solid var(--line) }
+#royal-world .steps li { display:grid;grid-template-columns:24px 1fr auto;gap:9px;align-items:center;min-height:39px;padding:6px 0 }
+#royal-world .steps li+li { border-top:1px solid var(--line) }
+#royal-world .marker { display:grid;place-items:center;width:22px;height:22px;border:1px solid var(--line);border-radius:5px;background:var(--bar);font-size:12px;font-weight:800 }
+#royal-world .step { font-weight:640 }
+#royal-world .label { font-size:12px;color:var(--muted);text-align:right }
+#royal-world li[data-status=done] :is(.label,.marker) { color:var(--green);font-weight:750 }
+#royal-world li[data-status=active] :is(.label,.marker) { color:var(--active);font-weight:750 }
+#royal-world li[data-status=error] :is(.label,.marker) { color:var(--warn);font-weight:750 }
+#royal-world .message { padding-top:10px;min-height:60px }
+#royal-world .message strong { display:block }
+#royal-world .message p { color:var(--muted);margin:2px 0 0 }
+#royal-world footer { display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;padding:10px 19px 13px;background:var(--bar);border-top:1px solid var(--line) }
+#royal-world .actions { display:flex;flex-wrap:wrap;gap:7px;justify-content:flex-end }
+#royal-world button { font:700 13px/1.2 -apple-system,BlinkMacSystemFont,sans-serif;padding:8px 11px;min-height:34px;border:1px solid var(--rim);border-radius:5px;background:var(--panel);color:var(--ink);box-shadow:0 2px var(--line) }
+#royal-world button.primary { color:#fffbed;background:var(--button);border-color:var(--button-rim);box-shadow:0 2px var(--button-shadow) }
+#royal-world button:disabled { opacity:.55 }
+#royal-world .demo { font-size:11px;color:var(--muted) }
+@media(max-width:430px) {
+  #royal-world .content,#royal-world footer { padding-inline:10px }
+  #royal-world .actions { justify-content:flex-start }
+  #royal-world .steps li { gap:6px }
+}
+@media(pointer:coarse) { #royal-world button { min-height:44px } }
+
+#royal-world button:enabled { cursor:pointer }
+#royal-world button:focus-visible { outline:2px solid var(--active);outline-offset:2px }
+#royal-world .actions button:only-child { margin-inline-start:auto }
+</style>
+</head>
+<body>
+<div id="royal-world">
+  <section class="launcher" aria-label="Royal GTPS launcher mockup">
+    <div class="titlebar">Royal GTPS Setup <span data-mode>Setup not started</span></div>
+    <div class="hero">
+      <img src="RoyalBanner.png" alt="Royal GTPS" width="1675" height="939" draggable="false">
+    </div>
+    <div class="content">
+      <div class="heading"><h2 data-heading>Install checklist</h2><span class="count" data-count>0 of 4 complete</span></div>
+      <ol class="steps" aria-label="Step status">
+        <li><span class="marker" aria-hidden="true">1</span><span class="step">Check that Growtopia is closed</span><span class="label">Pending</span></li>
+        <li><span class="marker" aria-hidden="true">2</span><span class="step">Trust the Royal GTPS certificate</span><span class="label">Pending</span></li>
+        <li><span class="marker" aria-hidden="true">3</span><span class="step">Update Growtopia server addresses</span><span class="label">Pending</span></li>
+        <li><span class="marker" aria-hidden="true">4</span><span class="step">Refresh and verify settings</span><span class="label">Pending</span></li>
+      </ol>
+      <div class="message" role="status"><strong data-title>Ready to install</strong><p data-detail>Close Growtopia first. macOS may ask for administrator approval.</p></div>
+    </div>
+    <footer>
+      <span class="demo">by HamumuSmokes</span>
+      <div class="actions">
+        <button type="button" class="cursor-interaction" data-cancel hidden>Cancel</button>
+        <button type="button" class="cursor-interaction" data-restore hidden disabled>Return to Original Growtopia</button>
+        <button type="button" class="primary cursor-interaction" data-action disabled>Install Royal GTPS</button>
+      </div>
+    </footer>
+  </section>
+</div>
+<script>
+(() => {
+  const root = document.getElementById("royal-world");
+  const field = name => root.querySelector("[data-" + name + "]");
+  const rows = Array.from(root.querySelectorAll(".steps li"));
+  const stateLabels = {
+    pending: "Pending", active: "In progress", approval: "Approval needed",
+    done: "Complete", error: "Needs attention"
+  };
+  const install = [
+    "Check that Growtopia is closed", "Trust the Royal GTPS certificate",
+    "Update Growtopia server addresses", "Refresh and verify settings"
+  ];
+  const restore = [
+    "Check that Growtopia is closed", "Remove SSL trust added by setup",
+    "Restore saved server addresses", "Refresh and verify restoration"
+  ];
+  const send = action => window.webkit.messageHandlers.setup.postMessage(action);
+  const main = field("action");
+  const undo = field("restore");
+  const cancel = field("cancel");
+  let primaryAction = "install";
+
+  window.renderSetup = state => {
+    field("heading").textContent = state.restoring ? "Restore checklist" : "Install checklist";
+    field("mode").textContent = state.mode;
+    field("count").textContent = state.completed + " of 4 complete";
+    field("title").textContent = state.title;
+    field("detail").textContent = state.detail;
+    for (const [index, row] of rows.entries()) {
+      const status = index < state.completed ? "done" : index === state.completed ? state.next : "pending";
+      row.dataset.status = status === "approval" ? "active" : status;
+      row.querySelector(".marker").textContent = status === "done" ? "✓" : status === "error" ? "!" : index + 1;
+      row.querySelector(".step").textContent = (state.restoring ? restore : install)[index];
+      row.querySelector(".label").textContent = stateLabels[status];
+    }
+    primaryAction = state.primaryAction;
+    main.textContent = state.primaryLabel;
+    main.disabled = state.primaryDisabled;
+    main.hidden = !state.primaryLabel;
+    undo.hidden = !state.showRestore;
+    undo.disabled = state.restoreDisabled;
+    cancel.hidden = !state.showCancel;
+  };
+
+  main.addEventListener("click", () => send(primaryAction));
+  undo.addEventListener("click", () => send("restore"));
+  cancel.addEventListener("click", () => send("cancel"));
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && !cancel.hidden) send("cancel");
+  });
+  const launcher = root.querySelector(".launcher");
+  new ResizeObserver(() => send({ height: Math.ceil(launcher.getBoundingClientRect().height) })).observe(launcher);
+})();
+</script>
+</body>
+</html>

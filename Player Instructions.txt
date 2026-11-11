@@ -1,0 +1,17 @@
+Royal GTPS Setup
+macOS 13 Ventura or later · Apple silicon and Intel
+
+1. Unzip Royal GTPS Setup.zip and double-click Royal GTPS Setup.app.
+2. If macOS blocks the first launch, and you trust the source of your ZIP,
+   go to Apple menu > System Settings > Privacy & Security. Scroll down
+   to Security, click Open Anyway for Royal GTPS Setup, then confirm Open.
+   An administrator may need to authenticate.
+3. Close Growtopia. Click Install Royal GTPS, review the private CA prompt, and
+   click Continue. Approve each macOS administrator prompt. The app
+   tells you which step it is on. When setup finishes, click Launch Growtopia.
+4. To restore your previous setup, close Growtopia and click
+   Return to Original Growtopia.
+   Approve the macOS prompts and wait for Previous settings restored.
+
+If Install is disabled, your copy is awaiting a confirmed certificate
+fingerprint. Ask the Royal GTPS distributor for an enabled build.

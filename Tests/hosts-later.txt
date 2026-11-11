@@ -1,0 +1,10 @@
+##
+# Local hosts
+127.0.0.1 localhost
+10.0.0.7 legacy-a legacy-b added-later # updated comment
+# old IPv6
+10.0.0.9 www.growtopia1.com.example.test # keep this
+# www.growtopia2.com stays in this comment
+15.235.167.45 www.growtopia1.com later-same-line
+15.235.167.45 www.growtopia2.com
+10.1.1.1 later.test

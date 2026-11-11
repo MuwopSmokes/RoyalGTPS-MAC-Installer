@@ -1,0 +1,8 @@
+##
+# Local hosts
+127.0.0.1 localhost
+10.0.0.7 legacy-a WWW.GROWTOPIA1.COM legacy-b www.growtopia2.com # shared aliases
+2001:db8::3 www.growtopia2.com # old IPv6
+10.0.0.8 www.growtopia1.com
+10.0.0.9 www.growtopia1.com.example.test # keep this
+# www.growtopia2.com stays in this comment
